@@ -34,10 +34,10 @@ pipeline {
             }
         }
     }
-}
-stage('Trigger CD') {
-    steps {
-        build job: 'StudentRegistry-CD',
-              wait: false
+
+    post {
+        success {
+            build job: 'StudentRegistry-CD', wait: false
+        }
     }
 }
